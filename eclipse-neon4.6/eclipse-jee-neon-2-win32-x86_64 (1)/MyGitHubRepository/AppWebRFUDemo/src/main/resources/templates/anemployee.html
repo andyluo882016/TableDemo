@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head><h2>This is angularjs application</h2>
+<!--  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>-->
+<script src="/js/angular.min.js"></script>
+</head>
+<body>
+   <h3>Welcome to Using the Angular to register employee</h3>
+    
+    <div ng-app="MyApp" ng-controller="MyController">
+    <pre>http status code: {{status}}</pre>
+  <pre>http response data: {{data}}</pre>
+  <p>Test message: {{test}}</p><hr>
+        FirstName:
+        <input type="text" ng-model="firstname"/>
+        <br/><br/><hr>
+        LastName:
+          <input type="text" ng-model="lastname"/>
+        <br/><br/><hr>
+        Your email:
+          <input type="text" ng-model="email"/>
+        <br/><br/><hr>
+        <input type="button" value="Submit" ng-click="ButtonClick()"/>
+        <br/><hr>
+         
+    </div>
+    
+    <script>
+    var app = angular.module('MyApp', [])
+    app.controller('MyController', function ($scope, $http, $window) {
+        $scope.ButtonClick = function () {
+        	$scope.code = null;
+            $scope.response = null;
+            $scope.test="this is my testing data";
+        	//var post = 
+            	$http({
+                method: "POST",
+                url: "/employees",
+                dataType: 'json',
+                data: { firstname: $scope.firstname, lastname:$scope.lastname, email:$scope.email },
+                headers: { "Content-Type": "application/json" }
+            }).then(function(response) {
+                $scope.status = JSON.stringify(response.status);
+                $scope.data = JSON.stringify(response.data);
+                console.log(JSON.stringify(response.data));
+              }, function(response) {
+                $scope.data = response.data || 'Request failed';
+                $scope.status = JSON.stringify(response.status);
+                $window.alert(response.status);
+            });
+         // };
+
+ 
+            /*post.success(function (data, status) {
+                $window.alert("Hello: " + data.firstname + " .\nCurrent Date and Time: " + data.DateTime);
+            });
+ 
+            post.error(function (data, status) {
+                $window.alert(data.Message);
+            });*/
+        }
+    });
+    </script>
+   
+     
+</body>
+</html>

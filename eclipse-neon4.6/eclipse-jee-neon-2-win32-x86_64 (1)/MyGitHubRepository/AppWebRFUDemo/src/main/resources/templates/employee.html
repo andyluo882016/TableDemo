@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+
+    <title>Spring Framework Guru</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.6.0/angular.min.js"></script>
+      
+      <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" />
+    
+</head>
+<body>
+<h1>Hello</h1>
+
+<h2>Fellow Spring Framework Gurus!!!</h2>
+<p> User-Agent: </p>
+<div>
+	<h2>Add A Dog</h2>
+	 <form action="#" th:action="@{/insert}" th:object="${employee}" method="post">
+    	<label>First-Name<input type="text" name="firstname" id="firstname"></input></label>
+	<label>last-name<input type="text" name="lastname" id="lastname"></input></label>
+	<label>Rescued<input type="text" name="email" id="email"></input></label>
+	<input type="submit" value="Submit"></input>
+        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+    </form>
+	</div><hr>
+
+<p> Employee-created: </p>
+<div>
+	<h2>Add A Dog</h2>
+	 <form action="#" th:action="@{/employees}" th:object="${employee}" method="post">
+    	<label>First-Name<input type="text" name="firstname" id="firstname"></input></label>
+	<label>last-name<input type="text" name="lastname" id="lastname"></input></label>
+	<label>Rescued<input type="text" name="email" id="email"></input></label>
+	<input type="submit" value="Submit"></input>
+        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+    </form>
+	</div>
+	
+
+</body>
+</html>
